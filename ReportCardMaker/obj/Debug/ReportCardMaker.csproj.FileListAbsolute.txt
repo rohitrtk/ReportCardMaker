@@ -1,0 +1,9 @@
+E:\Computer Programming\C#\ReportCardMaker\ReportCardMaker\bin\Debug\ReportCardMaker.exe.config
+E:\Computer Programming\C#\ReportCardMaker\ReportCardMaker\bin\Debug\ReportCardMaker.exe
+E:\Computer Programming\C#\ReportCardMaker\ReportCardMaker\bin\Debug\ReportCardMaker.pdb
+E:\Computer Programming\C#\ReportCardMaker\ReportCardMaker\obj\Debug\ReportCardMaker.csprojResolveAssemblyReference.cache
+E:\Computer Programming\C#\ReportCardMaker\ReportCardMaker\obj\Debug\ReportCardMaker.Form_MainForm.resources
+E:\Computer Programming\C#\ReportCardMaker\ReportCardMaker\obj\Debug\ReportCardMaker.Properties.Resources.resources
+E:\Computer Programming\C#\ReportCardMaker\ReportCardMaker\obj\Debug\ReportCardMaker.csproj.GenerateResource.Cache
+E:\Computer Programming\C#\ReportCardMaker\ReportCardMaker\obj\Debug\ReportCardMaker.exe
+E:\Computer Programming\C#\ReportCardMaker\ReportCardMaker\obj\Debug\ReportCardMaker.pdb
