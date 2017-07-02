@@ -1,0 +1,6 @@
+Float
+Gliding
+Kicking
+Front Crawl
+Back Crawl
+Breaststroke
