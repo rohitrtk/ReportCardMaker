@@ -25,12 +25,11 @@ namespace ReportCardMaker
         /// <summary>
         /// Template locations
         /// </summary>
-        private readonly static Dictionary<string, string> _templates;
+        private readonly static Dictionary<string, string[]> _templates;
 
         public static string Name => _name;
         public static string Version => _version;
         public static string SavePath => _savePath;
-        public static Dictionary<string, string> Templates => _templates;
 
         /// <summary>
         /// Static constructor
@@ -41,9 +40,13 @@ namespace ReportCardMaker
             _version = "v0.1";
             _savePath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
 
-            _templates = new Dictionary<string, string>
+            string[] skills = LoadTextTo(_savePath + "\\skills.txt");
+            string[] outlines = LoadTextTo(_savePath + "\\outlines.txt");
+
+            _templates = new Dictionary<string, string[]>
             {
-                { "Skills", _savePath + "skills" }
+                { "Skills", skills },
+                { "Outlines", outlines }
             };
         }
 
@@ -55,16 +58,9 @@ namespace ReportCardMaker
         /// <param name="output"></param>
         public static void LoadTextTo(string file, string[] output)
         {
-            string[] data;
-            try
-            {
-                data = File.ReadAllLines(file);
-            } 
-            catch(Exception)
-            {
-                Console.WriteLine("An Error occured writing data from file to object");
-                data = null;
-            }
+            if (!File.Exists(file)) throw new FileNotFoundException();
+
+            string[] data = File.ReadAllLines(file);
 
             output = data;
         }
@@ -75,16 +71,10 @@ namespace ReportCardMaker
         /// <param name="file"></param>
         /// <returns></returns>
         public static string[] LoadTextTo(string file)
-        {
-            try
-            {
-                return File.ReadAllLines(file);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("An Error occured writing data from file to object");
-                return null;
-            }
+        {   
+            if (!File.Exists(file)) throw new FileNotFoundException();
+
+            return File.ReadAllLines(file);
         }
         #endregion
         #region SaveTextTo
@@ -131,5 +121,32 @@ namespace ReportCardMaker
             w.Close();
         }
         #endregion
+
+        public static string[] GetTemplate(string key)
+        {
+            try
+            {
+                return _templates[key];
+            }
+            catch(Exception e)
+            {
+                Error(e.Data.ToString(), "trying to use key: " + key);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Prints out a string to the console; used to debug
+        /// </summary>
+        /// <param name="e"></param>
+        private static void Error(string e)
+        {
+            Console.WriteLine("Exception {0} was thrown!", e);
+        }
+
+        private static void Error(string e, string whl)
+        {
+            Console.WriteLine("Exception {0} was thrown while {1}!", e, whl);
+        }
     }
 }

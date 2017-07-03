@@ -87,7 +87,7 @@
             // Label_Name
             // 
             this.Label_Name.AutoSize = true;
-            this.Label_Name.Location = new System.Drawing.Point(12, 76);
+            this.Label_Name.Location = new System.Drawing.Point(15, 83);
             this.Label_Name.Name = "Label_Name";
             this.Label_Name.Size = new System.Drawing.Size(38, 13);
             this.Label_Name.TabIndex = 4;
@@ -96,7 +96,7 @@
             // Label_GreatJobOn
             // 
             this.Label_GreatJobOn.AutoSize = true;
-            this.Label_GreatJobOn.Location = new System.Drawing.Point(12, 103);
+            this.Label_GreatJobOn.Location = new System.Drawing.Point(15, 110);
             this.Label_GreatJobOn.Name = "Label_GreatJobOn";
             this.Label_GreatJobOn.Size = new System.Drawing.Size(73, 13);
             this.Label_GreatJobOn.TabIndex = 6;
@@ -105,7 +105,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 130);
+            this.label1.Location = new System.Drawing.Point(15, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 8;
@@ -113,7 +113,7 @@
             // 
             // TextBox_Name
             // 
-            this.TextBox_Name.Location = new System.Drawing.Point(86, 69);
+            this.TextBox_Name.Location = new System.Drawing.Point(89, 76);
             this.TextBox_Name.Name = "TextBox_Name";
             this.TextBox_Name.Size = new System.Drawing.Size(118, 20);
             this.TextBox_Name.TabIndex = 5;
@@ -122,7 +122,7 @@
             // ComboBox_GreatJobOn
             // 
             this.ComboBox_GreatJobOn.FormattingEnabled = true;
-            this.ComboBox_GreatJobOn.Location = new System.Drawing.Point(86, 95);
+            this.ComboBox_GreatJobOn.Location = new System.Drawing.Point(89, 102);
             this.ComboBox_GreatJobOn.Name = "ComboBox_GreatJobOn";
             this.ComboBox_GreatJobOn.Size = new System.Drawing.Size(118, 21);
             this.ComboBox_GreatJobOn.TabIndex = 9;
@@ -130,14 +130,14 @@
             // ComboBox_WorkOn
             // 
             this.ComboBox_WorkOn.FormattingEnabled = true;
-            this.ComboBox_WorkOn.Location = new System.Drawing.Point(86, 122);
+            this.ComboBox_WorkOn.Location = new System.Drawing.Point(89, 129);
             this.ComboBox_WorkOn.Name = "ComboBox_WorkOn";
             this.ComboBox_WorkOn.Size = new System.Drawing.Size(118, 21);
             this.ComboBox_WorkOn.TabIndex = 10;
             // 
             // Button_Preview
             // 
-            this.Button_Preview.Location = new System.Drawing.Point(15, 169);
+            this.Button_Preview.Location = new System.Drawing.Point(18, 176);
             this.Button_Preview.Name = "Button_Preview";
             this.Button_Preview.Size = new System.Drawing.Size(189, 23);
             this.Button_Preview.TabIndex = 11;
@@ -146,7 +146,7 @@
             // 
             // Button_Output
             // 
-            this.Button_Output.Location = new System.Drawing.Point(15, 217);
+            this.Button_Output.Location = new System.Drawing.Point(18, 224);
             this.Button_Output.Name = "Button_Output";
             this.Button_Output.Size = new System.Drawing.Size(189, 23);
             this.Button_Output.TabIndex = 12;
