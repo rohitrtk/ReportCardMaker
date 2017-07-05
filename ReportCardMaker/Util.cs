@@ -5,6 +5,9 @@ using System.IO;
 
 namespace ReportCardMaker
 {
+    /// <summary>
+    /// Static utility class containing methods to load and save data
+    /// </summary>
     public static partial class Util
     {
         /// <summary>
@@ -122,6 +125,12 @@ namespace ReportCardMaker
         }
         #endregion
 
+        /// <summary>
+        /// Returns the desired template based on a string key
+        /// Returns null if no such key exists
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static string[] GetTemplate(string key)
         {
             try
@@ -144,6 +153,11 @@ namespace ReportCardMaker
             Console.WriteLine("Exception {0} was thrown!", e);
         }
 
+        /// <summary>
+        /// Prints out a string to the console with a custom message; used to debug
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="whl"></param>
         private static void Error(string e, string whl)
         {
             Console.WriteLine("Exception {0} was thrown while {1}!", e, whl);

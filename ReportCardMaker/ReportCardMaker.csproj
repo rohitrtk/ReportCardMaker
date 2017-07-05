@@ -54,6 +54,7 @@
     <Compile Include="Form_MainForm.Designer.cs">
       <DependentUpon>Form_MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Outline.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util.cs" />
