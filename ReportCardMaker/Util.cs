@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 
 namespace ReportCardMaker
 {
@@ -26,6 +27,16 @@ namespace ReportCardMaker
         private static readonly string _savePath;
 
         /// <summary>
+        /// Name of the file which contains skills 
+        /// </summary>
+        private const string _skillsPath = "\\skills.txt";
+
+        /// <summary>
+        /// Name of the file which contains outlines
+        /// </summary>
+        private const string _outlinesPath = "\\outlines.txt";
+
+        /// <summary>
         /// Template locations
         /// </summary>
         private readonly static Dictionary<string, string[]> _templates;
@@ -43,8 +54,8 @@ namespace ReportCardMaker
             _version = "v0.1";
             _savePath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
 
-            string[] skills = LoadTextTo(_savePath + "\\skills.txt");
-            string[] outlines = LoadTextTo(_savePath + "\\outlines.txt");
+            string[] skills = LoadTextTo(_savePath + _skillsPath);
+            string[] outlines = LoadTextTo(_savePath + _outlinesPath);
 
             _templates = new Dictionary<string, string[]>
             {

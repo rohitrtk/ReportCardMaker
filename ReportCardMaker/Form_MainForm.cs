@@ -26,9 +26,6 @@ namespace ReportCardMaker
             _skills = Util.GetTemplate("Skills");
             _outlineTemplates = Util.GetTemplate("Outlines");
 
-            _outline = new Outline("Rohit", _outlineTemplates[0]);
-            _outline.GenerateOutline();
-
             InitializeFields();
         }
 
@@ -53,9 +50,25 @@ namespace ReportCardMaker
             Text = Util.Name + " | " + Util.Version;
         }
 
-        private void TextBox_Name_TextChanged(object sender, EventArgs e)
+        private void Button_Preview_Click(object sender, EventArgs e)
         {
+            var name = TextBox_Name.Text;
+            var gjo = ComboBox_GreatJobOn.SelectedItem.ToString();
+            var workOn = ComboBox_WorkOn.SelectedText;
             
+            if(name == null || name.Equals(String.Empty) || gjo == null || workOn == null)
+            {
+                MessageBox.Show("One or more fields is empty.\nPlease ensure all fields are filled", "Warning!");
+                return;
+            }
+
+            Random r = new Random();
+            var outlineNumber = 0; //(int)(r.NextDouble() + _outlineTemplates.Length);
+            _outline = new Outline(name, _outlineTemplates[outlineNumber]);
+            _outline.Skills.Add(gjo);
+            _outline.GenerateOutline();
+
+            TextBox_Preview.Text = _outline.GetFinishedOutline();
         }
     }
 }

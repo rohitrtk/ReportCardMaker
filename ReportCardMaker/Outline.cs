@@ -40,16 +40,16 @@ namespace ReportCardMaker
         private readonly List<string> _workOn;
         #endregion
 
-        public string Name => _name;
-        public List<string> Skills => _skills;
-        public List<string> Customs => _customs;
-        public List<string> WorkOn => _workOn;
+        public string Name { get => _name; }
+        public List<string> Skills { get => _skills; }
+        public List<string> Customs { get => _customs; }
+        public List<string> WorkOn { get => _workOn; }
 
-        /// <summary>
-        /// Creates a new outline with a string as the actual outline
-        /// </summary>
-        /// <param name="outlineText"></param>
-        public Outline(string name, string outlineText)
+    /// <summary>
+    /// Creates a new outline with a string as the actual outline
+    /// </summary>
+    /// <param name="outlineText"></param>
+    public Outline(string name, string outlineText)
         {
             _name = name;
             _outlineText = outlineText;
@@ -58,6 +58,14 @@ namespace ReportCardMaker
             _skills = new List<string>();
             _customs = new List<string>();
             _workOn = new List<string>();
+
+            _customs.Add("");
+            _workOn.Add("");
+        }
+
+        public string GetFinishedOutline()
+        {
+            return _trueOutline;
         }
 
         /// <summary>
@@ -69,22 +77,18 @@ namespace ReportCardMaker
             
             for(int i = 0; i < words.Length; i++)
             {
-                if (words[i].Contains(Tokens.NAME)) words[i] = SplitWord(words[i], Name, Tokens.NAME.Length);
-                else if (words[i].Contains(Tokens.SKILL)) words[i] = SplitWord(words[i], Skills[0], Tokens.SKILL.Length);
+                if (words[i].Contains(Tokens.NAME)) words[i] = SplitWord(words[i], _name, Tokens.NAME.Length);
+                else if (words[i].Contains(Tokens.SKILL))
+                {
+                    foreach(var v in Skills)
+                    {
+                        words[i] = SplitWord(words[i], v, Tokens.SKILL.Length);
+                    }
+                }
                 else if (words[i].Contains(Tokens.WORK)) words[i] = SplitWord(words[i], WorkOn[0], Tokens.WORK.Length);
                 else if (words[i].Contains(Tokens.CUSTOM)) words[i] = SplitWord(words[i], Customs[0], Tokens.CUSTOM.Length);
-
-                /*
-                if (words[i].Equals(Tokens.NAME) || words[i].Contains(Tokens.NAME)) words[i] = Name;
-                else if (words[i].Equals(Tokens.SKILL)) words[i] = Skills[0];
-                else if (words[i].Equals(Tokens.WORK)) words[i] = WorkOn[0];
-                */
             }
-
-            //foreach (var v in words)
-            //{
-            //    _trueOutline += v;
-            //}
+            foreach (var v in words) _trueOutline += (v + " ");
         }
 
         /// <summary>
@@ -100,21 +104,10 @@ namespace ReportCardMaker
         {
             var w = word.ToCharArray();
 
-            var w1 = replace;
-            //var w1 = String.Empty;
-            //for (int i = 0; i < w.Length; i++)
-            //{
-            //    if (i >= tokenLength) break;
-            //    w1 += w[i];
-            //}
-
             var w2 = String.Empty;
-            for (int i = word.Length; i > tokenLength; i--)
-            {
-                w2 += w[i - 1];
-            }
+            for (int i = word.Length; i > tokenLength; i--) w2 += w[i - 1];
 
-            return w1 + w2;
+            return replace + w2;
         }
     }
 

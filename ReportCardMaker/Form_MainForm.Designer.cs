@@ -69,9 +69,11 @@
             // 
             // TextBox_Preview
             // 
+            this.TextBox_Preview.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox_Preview.Location = new System.Drawing.Point(222, 76);
             this.TextBox_Preview.Multiline = true;
             this.TextBox_Preview.Name = "TextBox_Preview";
+            this.TextBox_Preview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TextBox_Preview.Size = new System.Drawing.Size(268, 354);
             this.TextBox_Preview.TabIndex = 1;
             // 
@@ -117,7 +119,6 @@
             this.TextBox_Name.Name = "TextBox_Name";
             this.TextBox_Name.Size = new System.Drawing.Size(118, 20);
             this.TextBox_Name.TabIndex = 5;
-            this.TextBox_Name.TextChanged += new System.EventHandler(this.TextBox_Name_TextChanged);
             // 
             // ComboBox_GreatJobOn
             // 
@@ -137,16 +138,17 @@
             // 
             // Button_Preview
             // 
-            this.Button_Preview.Location = new System.Drawing.Point(18, 176);
+            this.Button_Preview.Location = new System.Drawing.Point(18, 165);
             this.Button_Preview.Name = "Button_Preview";
             this.Button_Preview.Size = new System.Drawing.Size(189, 23);
             this.Button_Preview.TabIndex = 11;
             this.Button_Preview.Text = "Preview";
             this.Button_Preview.UseVisualStyleBackColor = true;
+            this.Button_Preview.Click += new System.EventHandler(this.Button_Preview_Click);
             // 
             // Button_Output
             // 
-            this.Button_Output.Location = new System.Drawing.Point(18, 224);
+            this.Button_Output.Location = new System.Drawing.Point(18, 194);
             this.Button_Output.Name = "Button_Output";
             this.Button_Output.Size = new System.Drawing.Size(189, 23);
             this.Button_Output.TabIndex = 12;
@@ -157,6 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(499, 438);
             this.Controls.Add(this.Button_Output);
             this.Controls.Add(this.Button_Preview);
