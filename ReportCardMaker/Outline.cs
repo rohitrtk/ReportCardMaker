@@ -30,42 +30,28 @@ namespace ReportCardMaker
         private readonly List<string> _skills;
 
         /// <summary>
-        /// Customs being used in the outline
+        /// The current number of skills that have been read
         /// </summary>
-        private readonly List<string> _customs;
-
-        /// <summary>
-        /// Skills that need to be worked on in the outline
-        /// </summary>
-        private readonly List<string> _workOn;
+        private int _skillCounter;
         #endregion
 
+        /// <summary>
+        /// Returns the name of the person for whom this outline is written for
+        /// </summary>
         public string Name { get => _name; }
-        public List<string> Skills { get => _skills; }
-        public List<string> Customs { get => _customs; }
-        public List<string> WorkOn { get => _workOn; }
 
-    /// <summary>
-    /// Creates a new outline with a string as the actual outline
-    /// </summary>
-    /// <param name="outlineText"></param>
-    public Outline(string name, string outlineText)
+        /// <summary>
+        /// Creates a new outline with a string as the actual outline
+        /// </summary>
+        /// <param name="outlineText"></param>
+        public Outline(string name, string outlineText)
         {
             _name = name;
             _outlineText = outlineText;
             _trueOutline = String.Empty;
 
             _skills = new List<string>();
-            _customs = new List<string>();
-            _workOn = new List<string>();
-
-            _customs.Add("");
-            _workOn.Add("");
-        }
-
-        public string GetFinishedOutline()
-        {
-            return _trueOutline;
+            _skillCounter = 0;
         }
 
         /// <summary>
@@ -73,21 +59,29 @@ namespace ReportCardMaker
         /// </summary>
         public void GenerateOutline()
         {
+            // Array of strings split by whitespace
             string[] words = _outlineText.Split(null);
-            
-            for(int i = 0; i < words.Length; i++)
+
+            /* 
+             * Iterates through the array of strings and compares them to tokens (defined in the Tokens struct)
+             * If the string contains a token, it calls the SplitWord function to determine what the token
+             * needs to be replaced with
+             */
+            for (int i = 0; i < words.Length; i++)
             {
+                // Compares name
                 if (words[i].Contains(Tokens.NAME)) words[i] = SplitWord(words[i], _name, Tokens.NAME.Length);
+                // Compares skill
                 else if (words[i].Contains(Tokens.SKILL))
                 {
-                    foreach(var v in Skills)
-                    {
-                        words[i] = SplitWord(words[i], v, Tokens.SKILL.Length);
-                    }
+                    words[i] = SplitWord(words[i], _skills[_skillCounter], Tokens.SKILL.Length);
+                    ++_skillCounter;
                 }
-                else if (words[i].Contains(Tokens.WORK)) words[i] = SplitWord(words[i], WorkOn[0], Tokens.WORK.Length);
-                else if (words[i].Contains(Tokens.CUSTOM)) words[i] = SplitWord(words[i], Customs[0], Tokens.CUSTOM.Length);
+                // Compares custom
+                else if (words[i].Contains(Tokens.CUSTOM)) words[i] = SplitWord(words[i], Tokens.REPLACE, Tokens.CUSTOM.Length);
             }
+
+            // Foreach variable in the array of words, append it to the true outline
             foreach (var v in words) _trueOutline += (v + " ");
         }
 
@@ -109,6 +103,24 @@ namespace ReportCardMaker
 
             return replace + w2;
         }
+
+        /// <summary>
+        /// Returns the true outline (The outline that will be read by the student and potential parent(s))
+        /// </summary>
+        /// <returns></returns>
+        public string GetFinishedOutline()
+        {
+            return _trueOutline;
+        }
+
+        /// <summary>
+        /// Called to add a skill to the list of skills
+        /// </summary>
+        /// <param name="skill"></param>
+        public void AddSkill(string skill)
+        {
+            _skills.Add(skill);
+        }
     }
 
     /// <summary>
@@ -120,5 +132,6 @@ namespace ReportCardMaker
         public const string SKILL = "{skill}";
         public const string CUSTOM = "{custom}";
         public const string WORK = "{work}";
+        public const string REPLACE = "{Replace Me!}";
     }
 }

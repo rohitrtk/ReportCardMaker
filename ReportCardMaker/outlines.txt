@@ -1,1 +1,1 @@
-{name}! Awesome job this session! You did a really great job with your {skill} making sure your {custom}. Keep working on your {work}, make sure to {custom}. Overall, great job this session and good luck next session!
+{name}! Awesome job this session! You did a really great job with your {skill} making sure your {custom}. Keep working on your {skill}, make sure to {custom}. Overall, great job this session and good luck next session!

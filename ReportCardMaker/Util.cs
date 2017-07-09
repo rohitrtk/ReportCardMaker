@@ -11,6 +11,7 @@ namespace ReportCardMaker
     /// </summary>
     public static partial class Util
     {
+        #region variables
         /// <summary>
         /// Name of the project
         /// </summary>
@@ -41,9 +42,21 @@ namespace ReportCardMaker
         /// </summary>
         private readonly static Dictionary<string, string[]> _templates;
 
+        /// <summary>
+        /// Returns this applications name
+        /// </summary>
         public static string Name => _name;
+
+        /// <summary>
+        /// Returns this applications version
+        /// </summary>
         public static string Version => _version;
+
+        /// <summary>
+        /// Returns the save path of this application
+        /// </summary>
         public static string SavePath => _savePath;
+        #endregion
 
         /// <summary>
         /// Static constructor
@@ -51,7 +64,7 @@ namespace ReportCardMaker
         static Util()
         {
             _name = "Report Card Maker";
-            _version = "v0.1";
+            _version = "v0.2";
             _savePath = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()));
 
             string[] skills = LoadTextTo(_savePath + _skillsPath);
@@ -142,7 +155,7 @@ namespace ReportCardMaker
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string[] GetTemplate(string key)
+        public static string[] GetValue(string key)
         {
             try
             {
